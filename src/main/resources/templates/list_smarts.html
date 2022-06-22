@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>List of smartphones</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+          rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="crossorigin="anonymous"></script>
+
+</head>
+<body>
+<th:block th:insert="navigation.html"></th:block>
+<div class="container mt-5" style="width: 30%">
+<h3>List of smartphones</h3>
+<table class="table table-striped w-auto">
+    <tr>
+        <th>№</th>
+        <th>Name</th>
+        <th>Firm</th>
+        <th>Os</th>
+        <th>Size</th>
+        <th>Color</th>
+        <th>Actions</th>
+    </tr>
+    <tbody>
+    <tr th:each="smart, iStat:${smarts}">
+        <td th:utext="${iStat.index+1}"></td>
+        <td th:utext="${smart.name}"></td>
+        <td th:utext="${smart.firm.name}"></td>
+        <td th:utext="${smart.os.name}"></td>
+        <td th:utext="${smart.size}"></td>*
+        <td>
+        <label class="color">
+            <span th:style="|background-color:${smart.color};|"></span>
+        </label></td>
+        <td><a th:href="@{/delete_smart(id=${smart.id})}">Delete</a>&nbsp
+            <a th:href="@{/edit_smart(id=${smart.id})}">Edit</a></td>
+    </tr>
+    </tbody>
+</table>
+    <a href="/add_smart">Create smartphone</a>
+</div>
+<script>
+    $('#a2').children().addClass('active');
+</script>
+</body>
+</html>
