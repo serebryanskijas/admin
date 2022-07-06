@@ -64,7 +64,8 @@ div class="container-fluid">
                 <td th:if="${user.enabled}" class="text-center"><i class="bi-check"></i> </td>
                 <td th:unless="${user.enabled}" class="text-center"><i class="bi-x"></i> </td>
                 <td><a th:href="@{/delete_user(id=${user.id})}"><i class="bi-eraser-fill"></i></a>&nbsp
-                    <a th:href="@{/edit_user(id=${user.id})}"><i class="bi-pencil-fill"></i> </a></td>
+                    <a th:href="@{/edit_user(id=${user.id})}"><i class="bi-pencil-fill"></i> </a>
+                </td>
             </tr>
             </tbody>
         </table>

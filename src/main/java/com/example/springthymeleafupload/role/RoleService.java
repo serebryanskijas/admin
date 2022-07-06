@@ -18,8 +18,8 @@ public class RoleService {
         return roleRepository.findById(id).get();
     }
 
-    public void save(Role role){
-        roleRepository.save(role);
+    public Role save(Role role){
+        return roleRepository.save(role);
     }
 
     public void deleteById(Long id){

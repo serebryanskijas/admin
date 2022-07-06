@@ -1,7 +1,5 @@
 package com.example.springthymeleafupload.user;
 
-import com.example.springthymeleafupload.user.User;
-import com.example.springthymeleafupload.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,19 +10,27 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    public List<User> findAll(){
+    public List<User> findAll() {
         return userRepository.findAll();
     }
 
-    public User findById(Long id){
+    public User save(User user) {
+        return userRepository.save(user);
+    }
+
+    public User findById(Long id) {
         return userRepository.findById(id).get();
     }
 
-    public void save(User user){
-        userRepository.save(user);
+    public void deleteById(Long id) {
+        userRepository.deleteById(id);
     }
 
-    public void deleteById(Long id){
-        userRepository.deleteById(id);
+    public User getUserByUsername(String username){
+        return userRepository.getUserByUsername(username);
+    }
+
+    public User getUserByEmail(String email){
+        return userRepository.getUserByEmail(email);
     }
 }
